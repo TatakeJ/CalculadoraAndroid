@@ -1,7 +1,21 @@
+<!--declaración del archivo XML con codificación UTf-8-->
 <?xml version="1.0" encoding="utf-8"?>
+
+<!--elemento raiz del archivo manifest-->
+<!--define el espacio de nombres de Android y el de herramientas-->
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
 
+    <!--Configuración global de la aplicación
+        - allowBackup: habilita copias de seguridad de datos de la app.
+        - dataExtractionRules y fullBackupContent: controlan qué datos se incluyen o excluyen en backups.
+        - icon y roundIcon: iconos que verá el usuario en el launcher.
+        - label: nombre que se muestra para la app.
+        - supportsRtl: soporte para idiomas de derecha a izquierda.
+        - theme: tema visual que se aplica por defecto.
+        Asegúrate de que existan los recursos referenciados:
+        @xml/data_extraction_rules, @xml/backup_rules, @mipmap/ic_launcher,
+        @mipmap/ic_launcher_round, @string/app_name, @style/Theme.Calculadora_1-->
     <application
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
@@ -11,14 +25,26 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Calculadora_1">
+
+        <!--Actividad principal (punto de entrada)
+             - MainActivity es la pantalla inicial.
+             - android:exported="true" es requerido en Android 12 o superior
+               cuando existe un intent-filter.
+             - El intent-filter con ACTION MAIN y CATEGORY LAUNCHER hace que
+               la app aparezca en el menú de aplicaciones y se pueda iniciar-->
         <activity
             android:name=".MainActivity"
             android:exported="true"
             android:label="@string/app_name">
+            
             <intent-filter>
+            
+                <!--acción que define la actividad principal de la aplicación-->
                 <action android:name="android.intent.action.MAIN" />
 
+                <!--categoria que permite que la aplicación aparezca en el menú de aplicaciones-->
                 <category android:name="android.intent.category.LAUNCHER" />
+
             </intent-filter>
         </activity>
     </application>
